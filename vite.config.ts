@@ -1,6 +1,10 @@
+// Vite 빌드 도구의 설정 파일
+// Vite는 이 파일을 읽고 프로젝트에 맞게 최적화된 빌드와 개발 환경을 구성함
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import svgr from 'vite-plugin-svgr'
+import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,4 +20,13 @@ export default defineConfig({
       include: '**/*.svg',
     }),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@shared': path.resolve(__dirname, './src/shared'),
+      '@assets': path.resolve(__dirname, './src/shared/assets'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@routes': path.resolve(__dirname, './src/routes'),
+    },
+  },
 })
