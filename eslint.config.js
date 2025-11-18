@@ -50,7 +50,7 @@ export default [
       /**=== 모듈 ===*/
       "import/first": "error", // import문 최상단 위치 (필수)
       "import/no-duplicates": "error", // 중복 import 금지 (필수)
-      "import/prefer-default-export": "warn", // 단일 export시, 'default export' 권장
+      "import/prefer-default-export": "off", // export시, 'named export' 사용
 
       /**=== 기타 ===*/
       "no-console": ["warn", { allow: ["warn", "error"] }], // console.log() 경고. 그 외 허용
