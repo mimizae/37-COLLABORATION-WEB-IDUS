@@ -14,7 +14,7 @@ globalStyle("body", {
 });
 
 globalStyle("html, body, #root", {
-  minHeight: "100dvh", // viewport(브라우저 화면) 높이의 100%를 최소 높이로 설정
+  minHeight: ["100vh", "100dvh"], // [폴백 값, 최종 값]
   WebkitFontSmoothing: "antialiased", // 폰트 렌더링 개선
   MozOsxFontSmoothing: "grayscale", // 폰트 렌더링 개선
 });
