@@ -8,7 +8,7 @@ import typescriptParser from "@typescript-eslint/parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["dist", "node_modules", "build", "*.config.js"] },
+  { ignores: ["dist", "node_modules", "build", "*.config.js", "*.config.ts"] },
 
   importPlugin.flatConfigs.recommended,
   importPlugin.flatConfigs.typescript,
@@ -22,6 +22,13 @@ export default [
     settings: {
       react: {
         version: "detect",
+      },
+      // import/resolver: TypeScript path alias (@svg 등)를 ESLint가 인식하도록 설정
+      "import/resolver": {
+        typescript: {
+          alwaysTryTypes: true,
+          project: "./tsconfig.app.json",
+        },
       },
     },
     languageOptions: {
