@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import react from "@vitejs/plugin-react-swc";
 import svgr from "vite-plugin-svgr";
 import path from "path";
 
@@ -9,6 +8,7 @@ import path from "path";
 export default defineConfig({
   plugins: [
     react(),
+    vanillaExtractPlugin(),
     svgr({
       svgrOptions: {
         ref: true, // JavaScript로 SVG 직접 접근 가능(useRef 등)
