@@ -1,12 +1,25 @@
-import React from 'react'
-import * as styles from './large-button.css'
+import React from "react";
+import * as styles from "./large-button.css";
+import type { LargeButtonVariants } from "@/shared/constants/button";
+import { ChevronDown } from "@/assets/svg";
 
-const LargeButton = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+interface Props extends React.ComponentProps<"button"> {
+  variant: LargeButtonVariants;
+  hasArrow?: boolean;
 }
 
-export default LargeButton
+const LargeButton = ({
+  variant,
+  children,
+  hasArrow = false,
+  ...props
+}: Props) => {
+  return (
+    <button className={styles.buttonStyles({ variant })} {...props}>
+      {children}
+      {hasArrow && <ChevronDown className={styles.arrow({ variant })} />}
+    </button>
+  );
+};
+
+export default LargeButton;

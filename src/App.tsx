@@ -1,5 +1,7 @@
+import ButtonTest from "@/shared/components/button/ButtonTest";
+
 function App() {
-  return <div></div>;
+  return <ButtonTest />;
 }
 
 export default App;

@@ -11,7 +11,8 @@ export const buttonStyles = recipe({
     whiteSpace: "nowrap",
     borderRadius: "4px",
     transition: "all 0.2s ease",
-    minWidth: "13.8rem",
+    width: "13.8rem",
+    padding: "1.2rem 1rem",
   },
 
   variants: {

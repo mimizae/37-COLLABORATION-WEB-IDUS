@@ -1,5 +1,5 @@
 import type React from "react";
-import * as styles from "./button.css";
+import * as styles from "./small-button.css";
 import type { SmallButtonVariants } from "@/shared/constants/button";
 
 interface Props extends React.ComponentProps<"button"> {
