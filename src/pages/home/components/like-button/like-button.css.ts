@@ -24,12 +24,13 @@ export const container = recipe({
 });
 
 export const icon = style({
+  // 삭제 예정
   width: "2.4rem",
   height: "2.4rem",
   padding: "0.3rem 0.2rem",
 });
 
-export const text = style({
+export const count = style({
   ...typographyVars.body2,
   color: color.gray[100],
 });
