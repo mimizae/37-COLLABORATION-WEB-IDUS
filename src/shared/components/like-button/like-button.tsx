@@ -29,11 +29,19 @@ export const LikeButton = ({
       type="button"
       className={styles.container({ type })}
       onClick={onClick}>
-      {type == "maker" ? (
-        <span>{liked ? <MakerHeartFill /> : <MakerHeart />}</span>
-      ) : (
-        <span>{liked ? <BottomSheetHeartFill /> : <BottomSheetHeart />}</span>
-      )}
+      <span className={styles.iconWrapper}>
+        {type == "maker" ? (
+          liked ? (
+            <MakerHeartFill />
+          ) : (
+            <MakerHeart />
+          )
+        ) : liked ? (
+          <BottomSheetHeartFill />
+        ) : (
+          <BottomSheetHeart />
+        )}
+      </span>
       <span className={styles.count}>{count}</span>
     </button>
   );
