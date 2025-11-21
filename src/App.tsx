@@ -1,6 +1,10 @@
+import { Carousel } from "@/pages/home/components/carousel/carousel";
+
 function App() {
   return (
-    <div></div>
+    <div>
+      <Carousel />
+    </div>
   );
 }
 
