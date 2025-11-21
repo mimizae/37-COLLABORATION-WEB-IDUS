@@ -28,7 +28,8 @@ export const useCarouselLayout = ({
       track.style.transform = `translateX(calc(-${currentCarouselIndex * 100}% + ${draggedX}px))`;
     } else {
       // 드래그 중이 아니고,
-      // 트랜지션이 이미 진행 중이라면, 'none'으로 설정하여 중복 애니메이션을 제거
+      // isMoving이 true면: 슬라이드 이동 중이므로 애니메이션 적용 (ON)
+      // isMoving이 false면: 무한 스크롤을 위해 위치를 재조정해야 하므로 애니메이션 제거 (OFF)
       track.style.transition = isMoving ? "transform 0.5s ease-in-out" : "none";
       track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
     }
