@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router";
-import Header from "./Header";
-import Footer from "./Footer";
-import LoadingFallback from "./LoadingFallback";
+import Header from "./header";
+import Footer from "./footer";
+import LoadingFallback from "./loading-fallback";
 
 const Layout = () => {
   return (

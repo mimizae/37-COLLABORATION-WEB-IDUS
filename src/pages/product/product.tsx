@@ -1,11 +1,11 @@
 import { lazy } from "react";
-import LazySection from "@/shared/components/lazy-section/LazySection";
-import ProductInfo from "./components/ProductInfo";
+import LazySection from "@/shared/components/lazy-section/lazy-section";
+import ProductInfo from "./components/product-info";
 
 // Code splitting: 각 컴포넌트를 별도 chunk로 분리
-const ProductDetail = lazy(() => import("./components/ProductDetail"));
-const ProductReview = lazy(() => import("./components/ProductReview"));
-const RelatedProduct = lazy(() => import("./components/RelatedProduct"));
+const ProductDetail = lazy(() => import("./components/product-detail"));
+const ProductReview = lazy(() => import("./components/product-review"));
+const RelatedProduct = lazy(() => import("./components/related-product"));
 
 const ProductPage = () => {
   return (
