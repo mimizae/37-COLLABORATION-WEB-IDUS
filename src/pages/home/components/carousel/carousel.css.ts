@@ -1,8 +1,6 @@
 import { color } from "@/shared/styles/tokens/color.css";
-import { fontWeight } from "@/shared/styles/tokens/font.css";
 import { typographyVars } from "@/shared/styles/typography.css";
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 
 export const container = style({
   position: "relative",
@@ -18,24 +16,9 @@ export const header = style({
   width: "100%",
   padding: "1rem 1.6rem",
   zIndex: "10",
-});
 
-export const headerTitle = recipe({
-  base: {
-    ...typographyVars.caption2,
-    fontWeight: fontWeight.semibold,
-    textAlign: "center",
-  },
-  variants: {
-    isBold: {
-      true: {
-        color: color.brand[100],
-      },
-      false: {
-        color: color.white[200],
-      },
-    },
-  },
+  display: "flex",
+  justifyContent: "center",
 });
 
 export const carouselContainer = style({
@@ -64,6 +47,7 @@ export const footer = style({
   left: "0",
 
   display: "flex",
+  alignItems: "center",
   justifyContent: "space-between",
   width: "100%",
   padding: "0 1.6rem 1.6rem 1.6rem",
