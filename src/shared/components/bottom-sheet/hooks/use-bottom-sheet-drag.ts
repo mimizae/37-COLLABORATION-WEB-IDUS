@@ -14,7 +14,6 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
   // 드래그 시작
   const handleTouchStart = (e: React.TouchEvent) => {
-    console.log("드래그 시작");
     setStartY(e.touches[0].clientY); // 드래그를 시작한 y좌표 세팅
     setIsDragging(true);
   };
@@ -34,9 +33,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   };
 
   // 드래그 중 - content 영역
-  // 이게 드래그 중 계속 호출됨. 성능 무리 안가나?
   const handleTouchMove = (e: React.TouchEvent) => {
-    console.log("드래그 중");
     if (!isDragging) return;
 
     const currentY = e.touches[0].clientY; // 현재 드래그 y좌표
@@ -66,7 +63,6 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
   // 드래그 종료
   const handleTouchEnd = () => {
-    console.log("드래그 종료");
     setIsDragging(false);
 
     // 150px 이상 드래그하면 닫기

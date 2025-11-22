@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import * as styles from "./bottom-sheet.css";
-import { useBottomSheetDrag } from "./use-bottom-sheet-drag";
+import { useBottomSheetDrag } from "./hooks/use-bottom-sheet-drag";
 import DragHandler from "@/shared/components/drag-handler/drag-handler";
 
 interface Props {

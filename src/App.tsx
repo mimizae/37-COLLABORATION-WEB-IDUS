@@ -1,4 +1,4 @@
-import BottomSheetTest from "@/shared/components/bottom-sheet/BottomSheetTest";
+import BottomSheetTest from "@/shared/components/bottom-sheet/test/bottom-sheet-test";
 
 function App() {
   return <BottomSheetTest />;

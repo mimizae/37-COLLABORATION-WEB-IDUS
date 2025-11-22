@@ -1,3 +1,6 @@
+// 바텀시트 테스트 파일
+// 추후 제거 예정
+
 import { style } from "@vanilla-extract/css";
 import { typographyVars } from "@/shared/styles/typography.css";
 import { color } from "@/shared/styles/tokens/color.css";
