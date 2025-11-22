@@ -7,6 +7,7 @@ function App() {
 
   const handleChangeMakerLikeState = () => {
     // api 호출 이후 업데이트
+    // 여기에서 낙관적 업데이트 적용
     setMakerLiked((prev) => !prev);
   };
 

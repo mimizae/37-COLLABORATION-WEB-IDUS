@@ -1,10 +1,10 @@
+import * as styles from "./like-button.css";
 import {
   BottomSheetHeart,
   BottomSheetHeartFill,
   MakerHeart,
   MakerHeartFill,
 } from "@/assets/svg";
-import * as styles from "./like-button.css";
 
 interface LikeButtonProps {
   type: "bottom-sheets" | "maker";
@@ -19,24 +19,18 @@ export const LikeButton = ({
   count,
   onClick,
 }: LikeButtonProps) => {
+  const heartIcons = {
+    maker: liked ? <MakerHeartFill /> : <MakerHeart />,
+    "bottom-sheets": liked ? <BottomSheetHeartFill /> : <BottomSheetHeart />,
+  };
+
   return (
     <button
       type="button"
+      aria-pressed={liked}
       className={styles.container({ type })}
       onClick={onClick}>
-      <span className={styles.iconWrapper}>
-        {type == "maker" ? (
-          liked ? (
-            <MakerHeartFill />
-          ) : (
-            <MakerHeart />
-          )
-        ) : liked ? (
-          <BottomSheetHeartFill />
-        ) : (
-          <BottomSheetHeart />
-        )}
-      </span>
+      <span className={styles.iconWrapper}>{heartIcons[type]}</span>
       <span className={styles.count}>{count}</span>
     </button>
   );
