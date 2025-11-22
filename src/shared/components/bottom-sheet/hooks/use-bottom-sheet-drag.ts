@@ -28,6 +28,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     setDragDistance(sheetDeltaY);
 
     if (sheetRef.current) {
+      sheetRef.current.style.transition = "none"; // handleTouchEnd에서 추가된 transition 제거 -> sheet가 드래그에 즉각 반응
       sheetRef.current.style.transform = `translateY(${sheetDeltaY}px)`;
     }
   };
@@ -65,12 +66,20 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   const handleTouchEnd = () => {
     setIsDragging(false);
 
-    // 150px 이상 드래그하면 닫기
-    if (dragDistance > 250) {
-      onClose();
-    } else {
-      // 원위치로 복귀
-      if (sheetRef.current) {
+    if (sheetRef.current) {
+      // 200px 이상 드래그하면 닫기
+      if (dragDistance > 200) {
+        // 부드럽게 아래로 내려가며 닫기
+        sheetRef.current.style.transition = "transform 0.2s ease-in";
+        sheetRef.current.style.transform = "translateY(100%)";
+
+        // transition 완료 후 onClose 호출
+        setTimeout(() => {
+          onClose();
+        }, 200);
+      } else {
+        // 원위치로 복귀
+        sheetRef.current.style.transition = "transform 0.3s ease-out";
         sheetRef.current.style.transform = "translateY(0)";
       }
     }
