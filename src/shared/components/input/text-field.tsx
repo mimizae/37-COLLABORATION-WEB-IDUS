@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import * as styles from "./text-field.css";
 import { Delete } from "@/assets/svg";
 
@@ -9,12 +9,21 @@ interface Props extends React.ComponentProps<"input"> {
 
 const TextField = ({ label, placeholder, type, ...props }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleDelete = () => {
+    if (inputRef.current) {
+      inputRef.current.value = "";
+      inputRef.current.focus();
+    }
+  };
 
   return (
     <div className={styles.container({ isFocused })}>
       <label className={styles.label}>{label}</label>
       <div className={styles.inputContainer}>
         <input
+          ref={inputRef}
           type={type}
           placeholder={placeholder}
           className={styles.input}
@@ -26,7 +35,8 @@ const TextField = ({ label, placeholder, type, ...props }: Props) => {
           <button
             type="button"
             className={styles.deleteButton}
-            onMouseDown={(e) => e.preventDefault()}>
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={handleDelete}>
             <Delete className={styles.deleteButton} />
           </button>
         )}
