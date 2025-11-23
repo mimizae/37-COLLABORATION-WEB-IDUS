@@ -5,7 +5,7 @@ import { recipe } from "@vanilla-extract/recipes";
 
 export const container = style({
   display: "flex",
-  alignItems: "flex-start",
+  alignItems: "baseline",
   gap: "1.2rem",
   width: "100%",
 });
@@ -19,7 +19,6 @@ export const text = recipe({
         color: color.gray[100],
       },
       description: {
-        marginTop: "0.1406rem",
         ...typographyVars.body3,
         color: color.black[200],
       },
