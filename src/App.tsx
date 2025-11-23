@@ -1,52 +1,15 @@
 import * as styles from "./test.css";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Banner,
-  Benefit,
-  BottomSheetHeart,
-  BottomSheetHeartFill,
-  ChatFloating,
-  Check,
-  ChevronDown,
-  ChevronRightRounded,
-  ChevronRightSharp,
-  ChevronUp,
-  Delete,
-  Home,
-  Logo,
-  MakerHeart,
-  MakerHeartFill,
-  Search,
-  Share,
-  ShoppingCart,
-  Star,
-} from "./assets/svg";
+import { ReviewCard } from "@/pages/product-review/review-card";
 
 function App() {
   return (
     <div className={styles.test}>
-      <MakerHeart width={24} height={24} />
-      <MakerHeartFill width={24} height={24} />
-      <BottomSheetHeart width={24} height={24} />
-      <BottomSheetHeartFill width={50} height={50} />
-      <ArrowLeft width={24} height={24} />
-      <ArrowRight width={24} height={24} />
-      <ChevronDown width={24} height={24} />
-      <ChevronRightRounded width={24} height={24} />
-      <ChevronRightSharp width={24} height={24} />
-      <ChevronUp width={24} height={24} />
-      <Banner width={200} height={200} />
-      <Benefit width={24} height={24} />
-      <ChatFloating width={24} height={24} />
-      <Check width={24} height={24} />
-      <Delete width={24} height={24} />
-      <Home width={24} height={24} />
-      <Logo width={24} height={24} />
-      <Search width={24} height={24} />
-      <Share width={24} height={24} />
-      <ShoppingCart width={24} height={24} />
-      <Star width={24} height={24} />
+      <ReviewCard
+        nickname="닉네임"
+        createdDate="2024.11.25"
+        rating={4.0}
+        content="여자친구 생일에 특별한 편지를 주고싶어서 찾아보다가 이쁜 카세트로 목소리를 녹음해서 줄수있는게 있길래 한번 구매해봤어요 아직 전달을 하지는 못했지만 사진도 정말 이쁘게 들어가있고 문구와 디자인도 너무 이쁜것 같아요 새로운 감동을 줄 수 있을것 같습니다 대만족이에요!"
+      />
     </div>
   );
 }
