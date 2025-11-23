@@ -1,7 +1,7 @@
 import { default as Star } from "@svg/star.svg?react";
 import * as styles from "./review-card.css";
 
-interface ReviewCardProps {
+export interface ReviewCardProps {
   nickname: string; // 닉네임
   rating: number; // 별점
   createdDate: string; // 작성일

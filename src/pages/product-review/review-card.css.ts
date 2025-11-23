@@ -9,7 +9,6 @@ export const reviewCard = style({
     [components]: {
       padding: "2rem 0",
       backgroundColor: color.white[100],
-      marginBottom: "2rem",
       borderBottom: `0.1rem solid ${color.white[300]}`,
     },
   },
