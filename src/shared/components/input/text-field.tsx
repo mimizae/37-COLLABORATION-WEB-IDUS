@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import * as styles from "./text-field.css";
 import { Delete } from "@/assets/svg";
 
@@ -9,13 +9,14 @@ interface Props extends React.ComponentProps<"input"> {
 
 const TextField = ({ label, placeholder, type, ...props }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null); // input element 감시, X버튼 클릭 시 input value 초기화에 사용
+  const [value, setValue] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
 
   const handleDelete = () => {
-    if (inputRef.current) {
-      inputRef.current.value = "";
-      inputRef.current.focus();
-    }
+    setValue("");
   };
 
   return (
@@ -23,10 +24,11 @@ const TextField = ({ label, placeholder, type, ...props }: Props) => {
       <label className={styles.label}>{label}</label>
       <div className={styles.inputContainer}>
         <input
-          ref={inputRef}
           type={type}
           placeholder={placeholder}
           className={styles.input}
+          value={value}
+          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}
