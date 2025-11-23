@@ -19,7 +19,6 @@ export const text = recipe({
         color: color.gray[100],
       },
       description: {
-        width: "100%",
         marginTop: "0.1406rem",
         ...typographyVars.body3,
         color: color.black[200],
@@ -31,7 +30,7 @@ export const text = recipe({
 export const information = style({
   display: "flex",
   flexDirection: "column",
-  width: "26.7rem",
+  flex: 1,
   gap: "0.8rem",
 });
 
