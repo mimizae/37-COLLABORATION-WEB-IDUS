@@ -33,6 +33,7 @@ export const carouselTrack = style({
   width: "100%",
   height: "100%",
   transition: "transform 0.5s ease-in",
+  touchAction: "pan-y", // 좌우 스와이프 차단
 });
 
 export const image = style({
