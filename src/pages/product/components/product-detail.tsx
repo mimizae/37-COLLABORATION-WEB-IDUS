@@ -1,6 +1,4 @@
 const ProductDetail = () => {
-  console.log("🐏 ProductDetail");
-
   return (
     <section style={{ border: `1px solid blue`, padding: "2rem" }}>
       <h2>상품 세부정보</h2>

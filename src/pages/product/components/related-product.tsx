@@ -1,6 +1,4 @@
 const RelatedProduct = () => {
-  console.log("🍀 RelatedProduct");
-
   return (
     <section style={{ border: `1px solid red`, padding: "2rem" }}>
       <h2>연관 상품</h2>

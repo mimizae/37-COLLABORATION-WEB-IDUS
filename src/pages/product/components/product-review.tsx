@@ -1,8 +1,10 @@
 const ProductReview = () => {
-  console.log("🐥 ProductReview");
-
   return (
-    <section style={{ border: `1px solid green`, padding: "2rem" }}>
+    <section
+      style={{
+        border: `1px solid green`,
+        padding: "2rem",
+      }}>
       <h2>후기 및 댓글</h2>
       <div style={{ marginTop: "1rem" }}>
         <div

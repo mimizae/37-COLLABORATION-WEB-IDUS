@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, Suspense, type ReactNode } from "react";
 
 interface Props {
   children: ReactNode; // 실제 렌더링할 컴포넌트
@@ -12,7 +12,7 @@ const LazySection = ({
   children,
   fallback = null,
   threshold = 0.1,
-  rootMargin = "100px",
+  rootMargin = "200px", // 충분히 크게 설정해야 폴백 컴포넌트와 실제 Lazy 컴포넌트 교체가 사용자에게 보이지 않음
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null); // ref: 특정 DOM 요소 참조, 이 ref가 div 요소를 가리킴
   const [isVisible, setIsVisible] = useState(false); // 화면 진입 시 true로 상태 변경
@@ -26,8 +26,8 @@ const LazySection = ({
         }
       },
       {
-        threshold, // 렌더링할 컴포넌트가 얼마나 보여야 트리거할지 (0.1 = 10%)
-        rootMargin, // 미리 로딩할 여유 공간 (100px 전에 미리 로드)
+        threshold, // 렌더링할 컴포넌트가 얼마나 보여야 트리거할지 결정 (0.1 = 10%)
+        rootMargin, // 미리 로딩할 여유 공간
       }
     );
 
@@ -40,9 +40,15 @@ const LazySection = ({
     };
   }, [threshold, rootMargin]);
 
-  return <div ref={ref}>{isVisible ? children : fallback}</div>;
-  // JSX가 반환되면 React가 실제 DOM에 이 <div>를 생성하고,
-  // ref.current에 실제 DOM 요소가
+  return (
+    <div ref={ref}>
+      {isVisible ? (
+        <Suspense fallback={fallback}>{children}</Suspense>
+      ) : (
+        fallback
+      )}
+    </div>
+  );
 };
 
 export default LazySection;
