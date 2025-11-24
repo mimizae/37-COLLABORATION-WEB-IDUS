@@ -1,7 +1,12 @@
-import TextField from "@/shared/components/input/text-field";
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
+import * as styles from "./test.css";
 
 function App() {
-  return <TextField label="앨범 제목" placeholder="앨범 제목을 입력해주세요" />;
+  return (
+    <div className={styles.test}>
+      <ProductSummary />
+    </div>
+  );
 }
 
 export default App;
