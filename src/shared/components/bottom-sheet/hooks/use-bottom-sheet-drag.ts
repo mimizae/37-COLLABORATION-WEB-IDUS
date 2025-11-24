@@ -12,24 +12,24 @@ const RETURN_TRANSITION_DURATION = 300; // sheet 원위치 복귀 시 transition
 export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   const sheetRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-const [touchStartY, setTouchStartY] = useState(0);  // 방향 판단 용
-const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet transform 기준점
+  const [touchStartY, setTouchStartY] = useState(0); // 방향 판단용
+  const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet transform 기준점
   const [dragDistance, setDragDistance] = useState(0); // sheet이 내려간 거리
   const [isDragging, setIsDragging] = useState(false);
 
   // 드래그 시작
   const handleTouchStart = (e: React.TouchEvent) => {
-    setStartY(e.touches[0].clientY); // 드래그를 시작한 y좌표 세팅
+    setTouchStartY(e.touches[0].clientY);
     setIsDragging(true);
   };
 
   // sheet을 드래그하는 로직
   const moveSheet = (currentY: number) => {
-    if (sheetDragStartY === null) {
-      setSheetDragStartY(currentY);
+    if (sheetStartY === null) {
+      setSheetStartY(currentY);
     }
 
-    const sheetDeltaY = currentY - (sheetDragStartY ?? currentY);
+    const sheetDeltaY = currentY - (sheetStartY ?? currentY);
     setDragDistance(sheetDeltaY);
 
     if (sheetRef.current) {
@@ -43,7 +43,7 @@ const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet tr
     if (!isDragging) return;
 
     const currentY = e.touches[0].clientY; // 현재 드래그 y좌표
-    const deltaY = currentY - startY; // 드래그 이동 거리
+    const deltaY = currentY - touchStartY; // 드래그 이동 거리
 
     // 드래그가 위에서 아래로 진행될 때 if문 진입(content를 위로 스크롤하거나, 바텀시트를 닫기 위한 드래그 액션)
     if (deltaY > 0) {
@@ -59,7 +59,7 @@ const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet tr
     if (!isDragging) return;
 
     const currentY = e.touches[0].clientY;
-    const deltaY = currentY - startY;
+    const deltaY = currentY - touchStartY;
 
     if (deltaY > 0) {
       // drag handler 조작 시 scrollTop 체크 없이 바로 sheet 드래그
@@ -90,7 +90,7 @@ const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet tr
     }
 
     setDragDistance(0);
-    setSheetDragStartY(null);
+    setSheetStartY(null);
   };
 
   return {
