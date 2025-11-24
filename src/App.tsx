@@ -19,14 +19,14 @@ function App() {
   return (
     <div>
       <LikeButton
-        type="maker"
+        variant="maker"
         liked={makerLiked}
         count={9999}
         onClick={handleChangeMakerLikeState}
       />
 
       <LikeButton
-        type="bottom-sheets"
+        variant="bottom-sheets"
         liked={bottomSheetLiked}
         count={999}
         onClick={handleChangeBSLikeState}

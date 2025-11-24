@@ -13,13 +13,13 @@ export const container = recipe({
     border: "0.1rem solid black",
   },
   variants: {
-    type: {
+    variant: {
       "bottom-sheets": { width: "4.2rem" },
       maker: { width: "4.8rem" },
     },
   },
   defaultVariants: {
-    type: "bottom-sheets",
+    variant: "bottom-sheets",
   },
 });
 export const iconWrapper = style({

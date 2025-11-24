@@ -1,3 +1,4 @@
+import type React from "react";
 import * as styles from "./like-button.css";
 import {
   BottomSheetHeart,
@@ -6,18 +7,17 @@ import {
   MakerHeartFill,
 } from "@/assets/svg";
 
-interface LikeButtonProps {
-  type: "bottom-sheets" | "maker";
+interface LikeButtonProps extends React.ComponentProps<"button"> {
+  variant: "bottom-sheets" | "maker";
   liked: boolean;
   count: number;
-  onClick?: () => void;
 }
 
 export const LikeButton = ({
-  type,
+  variant,
   liked,
   count,
-  onClick,
+  ...buttonProps
 }: LikeButtonProps) => {
   const heartIcons = {
     maker: liked ? <MakerHeartFill /> : <MakerHeart />,
@@ -28,9 +28,9 @@ export const LikeButton = ({
     <button
       type="button"
       aria-pressed={liked}
-      className={styles.container({ type })}
-      onClick={onClick}>
-      <span className={styles.iconWrapper}>{heartIcons[type]}</span>
+      className={styles.container({ variant })}
+      {...buttonProps}>
+      <span className={styles.iconWrapper}>{heartIcons[variant]}</span>
       <span className={styles.count}>{count}</span>
     </button>
   );
