@@ -7,7 +7,7 @@ export const container = recipe({
   base: {
     display: "flex",
     flexDirection: "column",
-    width: "31.1rem",
+    width: "100%",
     borderBottom: `1px solid ${color.gray[300]}`,
   },
   variants: {
