@@ -14,13 +14,13 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [touchStartY, setTouchStartY] = useState(0); // 방향 판단용
   const [sheetStartY, setSheetStartY] = useState<number | null>(null); // sheet transform 기준점
-  const [dragDistance, setDragDistance] = useState(0); // sheet이 내려간 거리
-  const [isDragging, setIsDragging] = useState(false);
+  const dragDistanceRef = useRef(0); // sheet이 내려간 거리
+  const isDraggingRef = useRef(false); // 드래그 중인지 여부
 
   // 드래그 시작
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartY(e.touches[0].clientY);
-    setIsDragging(true);
+    isDraggingRef.current = true;
   };
 
   // sheet을 드래그하는 로직
@@ -30,7 +30,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     }
 
     const sheetDeltaY = currentY - (sheetStartY ?? currentY);
-    setDragDistance(sheetDeltaY);
+    dragDistanceRef.current = sheetDeltaY;
 
     if (sheetRef.current) {
       sheetRef.current.style.transition = "none"; // handleTouchEnd에서 추가된 transition 제거 -> sheet가 드래그에 즉각 반응
@@ -40,7 +40,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
   // content 영역 드래그
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
+    if (!isDraggingRef.current) return;
 
     const currentY = e.touches[0].clientY; // 현재 드래그 y좌표
     const deltaY = currentY - touchStartY; // 드래그 이동 거리
@@ -56,7 +56,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
   // drag handler 영역 드래그
   const handleDragHandlerMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
+    if (!isDraggingRef.current) return;
 
     const currentY = e.touches[0].clientY;
     const deltaY = currentY - touchStartY;
@@ -69,11 +69,11 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
   // 드래그 종료
   const handleTouchEnd = () => {
-    setIsDragging(false);
+    isDraggingRef.current = false;
 
     if (sheetRef.current) {
       // CLOSE_THRESHOLD 이상 드래그하면 닫기
-      if (dragDistance > CLOSE_THRESHOLD) {
+      if (dragDistanceRef.current > CLOSE_THRESHOLD) {
         // 부드럽게 아래로 내려가며 닫기
         sheetRef.current.style.transition = `transform ${CLOSE_TRANSITION_DURATION}ms ease-in`;
         sheetRef.current.style.transform = "translateY(100%)";
@@ -89,7 +89,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
       }
     }
 
-    setDragDistance(0);
+    dragDistanceRef.current = 0;
     setSheetStartY(null);
   };
 
