@@ -12,7 +12,7 @@ export const container = style({
   cursor: "pointer",
   userSelect: "none", // 버튼 드래그 방지, 더블클릭 시 텍스트 파란색으로 하이라이트 방지
   whiteSpace: "nowrap",
-  transition: "all 0.2s ease",
+  transition: "background-color 0.2s ease, transform 0.2s ease",
   boxShadow: "0px 4px 4px 0px rgba(18, 18, 18, 0.04)",
 
   ":active": {
