@@ -14,6 +14,8 @@ export function MakerInfo({
   description,
   profileImage = MakerProfileImage,
 }: MakerInfoProps) {
+  // TODO: api 연동해서 LikeButton에 전달 => 낙관적 업데이트
+
   return (
     <div className={styles.container}>
       <img
