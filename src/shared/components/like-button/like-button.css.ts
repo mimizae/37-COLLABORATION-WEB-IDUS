@@ -13,7 +13,6 @@ export const container = recipe({
         gap: "0.4rem",
         alignItems: "center",
         justifyContent: "center",
-        border: "0.1rem solid black",
       },
     },
   },
