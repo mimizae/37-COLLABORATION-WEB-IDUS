@@ -1,36 +1,10 @@
-import { useState } from "react";
-import { LikeButton } from "./shared/components/like-button/like-button";
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
+import * as styles from "./test.css";
 
 function App() {
-  const [makerLiked, setMakerLiked] = useState(false);
-  const [bottomSheetLiked, setBottomSheetLiked] = useState(false);
-
-  const handleChangeMakerLikeState = () => {
-    // api 호출 이후 업데이트
-    // 여기에서 낙관적 업데이트 적용
-    setMakerLiked((prev) => !prev);
-  };
-
-  const handleChangeBSLikeState = () => {
-    // api 호출 이후 업데이트
-    setBottomSheetLiked((prev) => !prev);
-  };
-
   return (
-    <div>
-      <LikeButton
-        variant="maker"
-        liked={makerLiked}
-        count={9999}
-        onClick={handleChangeMakerLikeState}
-      />
-
-      <LikeButton
-        variant="bottom-sheets"
-        liked={bottomSheetLiked}
-        count={999}
-        onClick={handleChangeBSLikeState}
-      />
+    <div className={styles.test}>
+      <ProductSummary />
     </div>
   );
 }
