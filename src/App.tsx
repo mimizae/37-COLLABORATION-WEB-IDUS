@@ -1,10 +1,10 @@
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
 import * as styles from "./test.css";
-import { ReviewList } from "@/pages/product-review/review-list";
 
 function App() {
   return (
     <div className={styles.test}>
-      <ReviewList />
+      <ProductSummary />
     </div>
   );
 }
