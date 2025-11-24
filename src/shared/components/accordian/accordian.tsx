@@ -20,6 +20,8 @@ export const Accrodian = ({
 }: AccrodianProps) => {
   const isMaker = type === "maker";
   const isArrowIcon = iconType === "arrow";
+  const hasBorder = isMaker && isArrowIcon;
+
   const [isAccrodianOpen, setIsAccrodianOpen] = useState(false);
 
   const handleAccrodianClick = () => {
@@ -37,13 +39,7 @@ export const Accrodian = ({
   };
 
   return (
-    <div
-      className={[
-        styles.container({ type }),
-        isMaker && isArrowIcon && styles.makerBorder,
-      ]
-        .filter(Boolean)
-        .join(" ")}>
+    <div className={styles.container({ type, hasBorder })}>
       <div className={styles.accordion} onClick={handleAccrodianClick}>
         <div className={styles.titleWrapper}>
           <span className={styles.title({ type })}>{title}</span>
@@ -63,12 +59,9 @@ export const Accrodian = ({
       </div>
       {!isArrowIcon && (
         <div
-          className={[
-            styles.contentWrapper,
-            isAccrodianOpen && styles.contentOpen,
-          ]
-            .filter(Boolean)
-            .join(" ")}>
+          className={styles.contentWrapper({
+            isAccrodianOpen,
+          })}>
           <div className={styles.content}>{children}</div>
         </div>
       )}

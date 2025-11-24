@@ -13,6 +13,16 @@ export const container = recipe({
       "bottom-sheets": { borderBottom: `0.1rem solid ${color.white[300]}` },
       maker: {},
     },
+    hasBorder: {
+      true: {
+        borderTop: `0.1rem solid ${color.white[300]}`,
+        borderBottom: `0.1rem solid ${color.white[300]}`,
+      },
+      false: {},
+    },
+  },
+  defaultVariants: {
+    hasBorder: false,
   },
 });
 
@@ -21,11 +31,6 @@ export const accordion = style({
   justifyContent: "space-between",
   width: "100%",
   padding: "1.6rem 0",
-});
-
-export const makerBorder = style({
-  borderTop: `0.1rem solid ${color.white[300]}`,
-  borderBottom: `0.1rem solid ${color.white[300]}`,
 });
 
 export const titleWrapper = style({
@@ -82,15 +87,22 @@ export const toggleIcon = recipe({
   },
 });
 
-export const contentWrapper = style({
-  display: "grid",
-  gridTemplateRows: "0fr",
-  transition: "grid-template-rows 0.3s ease",
-  overflow: "hidden",
-});
-
-export const contentOpen = style({
-  gridTemplateRows: "1fr",
+export const contentWrapper = recipe({
+  base: {
+    display: "grid",
+    gridTemplateRows: "0fr",
+    transition: "grid-template-rows 0.3s ease",
+    overflow: "hidden",
+  },
+  variants: {
+    isAccrodianOpen: {
+      true: { gridTemplateRows: "1fr" },
+      false: {},
+    },
+  },
+  defaultVariants: {
+    isAccrodianOpen: false,
+  },
 });
 
 export const content = style({
