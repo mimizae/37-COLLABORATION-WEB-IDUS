@@ -1,27 +1,19 @@
+import { BottomSheetAccordion } from "./shared/components/accordian/bottom-sheet-accordian";
+import { MakerAccordion } from "./shared/components/accordian/maker-accordian";
 import * as styles from "./test.css";
-
-import { Accrodian } from "./shared/components/accordian/accordian";
 
 function App() {
   return (
     <div className={styles.test}>
-      <Accrodian
-        type="maker"
+      <MakerAccordion
         title="제작 / 배송"
         selectedOption="평균 1일 / 최대 1일 이내"
       />
-      <Accrodian
-        type="bottom-sheets"
-        title="제목 설정"
-        selectedOption="앨범 제목만"
-        children={
-          <>
-            <div className={styles.children}>하하하</div>
-            <div className={styles.children}>하하하</div>
-          </>
-        }
-      />
-      <Accrodian type="maker" iconType="arrow" title="작품 제보하기" />
+      <BottomSheetAccordion title="제목 설정" selectedOption="앨범 제목만">
+        <div className={styles.children}>하하하</div>
+        <div className={styles.children}>하하하</div>
+      </BottomSheetAccordion>
+      <MakerAccordion iconType="arrow" title="작품 제보하기" />
     </div>
   );
 }
