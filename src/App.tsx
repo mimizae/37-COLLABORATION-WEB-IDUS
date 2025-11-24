@@ -1,7 +1,12 @@
-import FloatingButton from "@/shared/components/floating-button/floating-button";
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
+import * as styles from "./test.css";
 
 function App() {
-  return <FloatingButton />;
+  return (
+    <div className={styles.test}>
+      <ProductSummary />
+    </div>
+  );
 }
 
 export default App;
