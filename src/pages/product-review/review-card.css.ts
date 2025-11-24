@@ -60,7 +60,7 @@ export const reviewMeta = style({
   },
 });
 
-export const reviewRating = style({
+export const reviewScore = style({
   "@layer": {
     [components]: {
       color: color.gray[100],

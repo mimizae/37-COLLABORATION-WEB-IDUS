@@ -3,15 +3,15 @@ import * as styles from "./review-card.css";
 
 export interface ReviewCardProps {
   nickname: string; // 닉네임
-  rating: number; // 별점
-  createdDate: string; // 작성일
+  score: number; // 별점
+  createdAt: string; // 작성일
   content: string; // 후기 내용
 }
 
 export const ReviewCard = ({
   nickname,
-  rating,
-  createdDate,
+  score,
+  createdAt,
   content,
 }: ReviewCardProps) => {
   return (
@@ -19,18 +19,18 @@ export const ReviewCard = ({
     <article className={styles.reviewCard}>
       <div className={styles.reviewHeader}>
         {/* 왼쪽 프로필 */}
-        <div className={styles.reviewProfile}></div>
+        <div className={styles.reviewProfile} />
 
         {/* 오른쪽: 닉네임 + (작성일 / 별점) */}
         <div>
           <p className={styles.reviewNickname}>{nickname}</p>
           <div className={styles.reviewMeta}>
-            <span>{createdDate}</span>
-            <span className={styles.reviewRating}>
+            <span>{createdAt}</span>
+            <span className={styles.reviewScore}>
               <span className={styles.reviewStarWrapper}>
                 <Star />
               </span>
-              {rating.toFixed(1)}
+              {score.toFixed(1)}
             </span>
           </div>
         </div>
