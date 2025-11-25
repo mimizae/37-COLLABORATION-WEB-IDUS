@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { components } from "@/shared/styles/layer.css";
 import { color } from "@/shared/styles/tokens/color.css";
-import { typographyStyle } from "@/shared/styles/typography.css";
+import { typographyVars } from "@/shared/styles/typography.css";
 
 // 전체 섹션 박스
 export const container = style({
@@ -26,7 +26,7 @@ export const header = style({
 export const caption = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("body3"),
+      ...typographyVars.body3,
       color: color.gray[100],
       margin: 0,
       marginBottom: "0.8rem",
@@ -38,7 +38,7 @@ export const caption = style({
 export const title = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("heading2"),
+      ...typographyVars.heading2,
       color: color.black[100],
       margin: 0,
       marginBottom: "1.6rem",
@@ -62,7 +62,7 @@ export const scoreSection = style({
 export const scoreValue = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("display"),
+      ...typographyVars.display,
       color: color.black[100],
       margin: 0,
     },
@@ -113,7 +113,7 @@ export const starIcon = style({
 export const reviewCountText = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("caption1"),
+      ...typographyVars.caption1,
       color: color.gray[100],
       margin: 0,
       display: "flex",
@@ -125,7 +125,7 @@ export const reviewCountText = style({
 export const reviewCountNumber = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("caption1"),
+      ...typographyVars.caption1,
       color: color.black[100],
       marginLeft: "0.4rem",
     },
@@ -155,7 +155,7 @@ export const aiHeader = style({
 export const aiLabel = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("body3"),
+      ...typographyVars.body3,
       margin: 0,
     },
   },
@@ -164,7 +164,7 @@ export const aiLabel = style({
 export const aiDescription = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("caption2"),
+      ...typographyVars.caption2,
       color: color.gray[100],
       margin: 0,
     },
@@ -183,7 +183,7 @@ export const aiSummaryBox = style({
 export const aiSummaryText = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("body4"),
+      ...typographyVars.body4,
       padding: "1.6rem",
     },
   },
@@ -252,7 +252,7 @@ export const thumbnailOverlay = style({
 export const thumbnailText = style({
   "@layer": {
     [components]: {
-      ...typographyStyle("heading3"),
+      ...typographyVars.heading3,
       color: color.white[100],
     },
   },
