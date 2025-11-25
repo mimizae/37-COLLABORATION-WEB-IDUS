@@ -13,7 +13,7 @@ export const container = recipe({
     width: "fit-content",
     height: "12.2rem",
     padding: "1.6rem 1.2rem",
-    borderRadius: "1.2rem",
+    borderRadius: "12px",
   },
   variants: {
     type: {
@@ -60,7 +60,7 @@ export const benefitContent = recipe({
 
 export const benefitBadge = style({
   padding: "0.4rem 0.6rem",
-  borderRadius: "0.2rem",
+  borderRadius: "0.2px",
   backgroundColor: color.brand[200],
 });
 
