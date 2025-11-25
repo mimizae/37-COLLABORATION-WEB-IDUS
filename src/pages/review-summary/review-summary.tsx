@@ -1,11 +1,16 @@
 import * as styles from "./review-summary.css";
 import { default as Star } from "@svg/star.svg?react";
 
+interface ReviewThumbnail {
+  reviewId: number;
+  imageUrl: string;
+}
+
 interface ReviewSummaryProps {
   averageScore: number;
   reviewCount: number;
   aiSummary: string;
-  thumbnails: string[];
+  thumbnails: ReviewThumbnail[];
 }
 
 export const ReviewSummary = ({
@@ -60,10 +65,10 @@ export const ReviewSummary = ({
       {/* 3. 썸네일 */}
       <section className={styles.thumbnailSection}>
         <div className={styles.thumbnailGrid}>
-          {thumbnails.map((src, index) => (
-            <div key={index} className={styles.thumbnail}>
+          {thumbnails.map((thumbnail, index) => (
+            <div key={thumbnail.reviewId} className={styles.thumbnail}>
               <img
-                src={src}
+                src={thumbnail.imageUrl}
                 alt="작품 썸네일"
                 className={styles.thumbnailImage}
               />
