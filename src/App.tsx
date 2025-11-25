@@ -1,7 +1,7 @@
 import {
   WorkKeywords,
   type WorkKeyword,
-} from "@pages/work-keywords/work-keywords";
+} from "@pages/product-review/work-keywords";
 import * as styles from "./test.css";
 
 const mockKeywords: WorkKeyword[] = [
