@@ -6,7 +6,7 @@ interface MembershipBenefitProps {
   description: string;
   price: number;
   unit: string;
-  readonly badges: string[];
+  badges: string[];
 }
 
 export const MembershipBenefit = ({
