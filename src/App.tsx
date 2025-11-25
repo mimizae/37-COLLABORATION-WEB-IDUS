@@ -1,7 +1,12 @@
-import BottomSheetTest from "@/shared/components/bottom-sheet/test/bottom-sheet-test";
+import { ProductSummary } from "./pages/home/components/product-summary/product-summary";
+import * as styles from "./test.css";
 
 function App() {
-  return <BottomSheetTest />;
+  return (
+    <div className={styles.test}>
+      <ProductSummary />
+    </div>
+  );
 }
 
 export default App;
