@@ -8,14 +8,22 @@ export const layout = style({
   right: 0,
   margin: "0 auto",
   maxWidth: "375px",
+  zIndex: 1000, // TODO: zIndex 값 확인
 });
 
+// footer-detail, footer의 wrapper
+export const wrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.4rem",
+  backgroundColor: color.white[100],
+});
+
+// footer의 container
 export const container = style({
   display: "flex",
   justifyContent: "space-between",
-
   width: "100%",
-  backgroundColor: color.white[100],
   padding: "0 1.6rem 4rem",
 });
 
