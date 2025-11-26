@@ -4,9 +4,10 @@ import { addComma } from "@/shared/utils/add-comma";
 import { MEMBERSHIP_DATA, PAY_BENEFITS_DATA } from "@/shared/constants/benefit";
 import { PayBenefit } from "@/shared/components/benefit/pay-benefit";
 import { MoreBenefit } from "@/shared/components/benefit/more-benefit";
-import { ChevronRightRounded, Share, Star } from "@/assets/svg";
+import { ChevronRightRounded, Share } from "@/assets/svg";
 import { Text } from "../text/text";
-interface ProductMainInfoProps {
+import { getProductStatsList } from "../../utils/get-product-stats";
+export interface ProductMainInfoProps {
   authorName: string;
   productName: string;
   originalPrice: number;
@@ -18,6 +19,8 @@ interface ProductMainInfoProps {
 }
 
 export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
+  const statsList = getProductStatsList(data); // 제품 부가정보 데이터 포맷팅 함수
+
   return (
     <div className={styles.container}>
       {/** 제품 메인 정보 */}
@@ -80,28 +83,20 @@ export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
       {/** 제품 부가 정보 */}
       <div className={styles.extraInfo}>
         <div className={styles.flexRow}>
-          <div className={styles.extraInfoItem}>
-            <Star />
-            <Text type="caption" color="black-200">
-              {data.averageScore}
-            </Text>
-          </div>
-          <div className={styles.extraInfoItem}>
-            <Text type="caption" color="gray-300">
-              후기
-            </Text>
-            <Text type="caption" color="gray-100">
-              {addComma(String(data.reviewCount))}
-            </Text>
-          </div>
-          <div className={styles.extraInfoItem}>
-            <Text type="caption" color="gray-300">
-              구매
-            </Text>
-            <Text type="caption" color="gray-100">
-              {addComma(String(data.salesCount))}
-            </Text>
-          </div>
+          {statsList.map((stat, index) => (
+            <div key={index} className={styles.extraInfoItem}>
+              {typeof stat.label === "string" ? (
+                <Text type="caption" color="gray-300">
+                  {stat.label}
+                </Text>
+              ) : (
+                stat.label
+              )}
+              <Text type="caption" color={stat.color}>
+                {stat.value}
+              </Text>
+            </div>
+          ))}
         </div>
         <button type="button" aria-label="공유하기">
           <Share />
