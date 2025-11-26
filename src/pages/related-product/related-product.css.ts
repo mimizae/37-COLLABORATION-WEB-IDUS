@@ -1,5 +1,6 @@
 import { typographyVars } from "@/shared/styles/typography.css";
 import { style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 import { color } from "@/shared/styles/tokens/color.css";
 import { components } from "@/shared/styles/layer.css";
 
@@ -13,23 +14,38 @@ export const section = style({
   },
 });
 
-export const title = style({
-  "@layer": {
-    [components]: {
-      ...typographyVars.heading3,
-      color: color.black[100],
-      marginBottom: "0.4rem",
+export const headerText = recipe({
+  base: {
+    "@layer": {
+      [components]: {
+        textAlign: "left",
+      },
     },
   },
-});
-
-export const caption = style({
-  "@layer": {
-    [components]: {
-      ...typographyVars.caption2,
-      color: color.gray[100],
-      marginBottom: "2rem",
+  variants: {
+    type: {
+      title: {
+        "@layer": {
+          [components]: {
+            ...typographyVars.heading3,
+            color: color.black[100],
+            marginBottom: "0.4rem",
+          },
+        },
+      },
+      caption: {
+        "@layer": {
+          [components]: {
+            ...typographyVars.caption2,
+            color: color.gray[100],
+            marginBottom: "2rem",
+          },
+        },
+      },
     },
+  },
+  defaultVariants: {
+    type: "title",
   },
 });
 
@@ -88,30 +104,53 @@ export const thumbnailImage = style({
   },
 });
 
-export const adBadge = style({
-  "@layer": {
-    [components]: {
-      position: "absolute",
-      top: "0.4rem",
-      right: "0.4rem",
-      padding: "0.2rem 0.4rem",
-      borderRadius: "4px",
-      backgroundColor: color.white[300],
-      color: color.gray[100],
+export const badge = recipe({
+  base: {
+    "@layer": {
+      [components]: {
+        position: "absolute",
+        padding: "0.2rem 0.4rem",
+        borderRadius: "4px",
+        ...typographyVars.caption2,
+      },
     },
   },
-});
-
-export const bundleBadge = style({
-  "@layer": {
-    [components]: {
-      position: "absolute",
-      bottom: "0.4rem",
-      left: "0.4rem",
-      padding: "0.2rem 0.4rem",
-      borderRadius: "4px",
-      backgroundColor: color.brand[100],
-      color: color.white[300],
+  variants: {
+    tone: {
+      ad: {
+        "@layer": {
+          [components]: {
+            backgroundColor: color.white[300],
+            color: color.gray[100],
+          },
+        },
+      },
+      bundle: {
+        "@layer": {
+          [components]: {
+            backgroundColor: color.brand[100],
+            color: color.white[300],
+          },
+        },
+      },
+    },
+    position: {
+      topRight: {
+        "@layer": {
+          [components]: {
+            top: "0.4rem",
+            right: "0.4rem",
+          },
+        },
+      },
+      bottomLeft: {
+        "@layer": {
+          [components]: {
+            bottom: "0.4rem",
+            left: "0.4rem",
+          },
+        },
+      },
     },
   },
 });
