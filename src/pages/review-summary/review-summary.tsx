@@ -69,7 +69,7 @@ export const ReviewSummary = ({
             <div key={thumbnail.reviewId} className={styles.thumbnail}>
               <img
                 src={thumbnail.imageUrl}
-                alt="작품 썸네일"
+                alt={`작품 썸네일 ${thumbnail.reviewId}`}
                 className={styles.thumbnailImage}
               />
 
