@@ -28,7 +28,6 @@ export const caption = style({
     [components]: {
       ...typographyVars.body3,
       color: color.gray[100],
-      margin: 0,
       marginBottom: "0.8rem",
     },
   },
