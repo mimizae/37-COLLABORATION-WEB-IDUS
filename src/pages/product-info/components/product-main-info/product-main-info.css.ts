@@ -1,7 +1,5 @@
 import { color } from "@/shared/styles/tokens/color.css";
-import { typographyVars } from "@/shared/styles/typography.css";
 import { style } from "@vanilla-extract/css";
-import { recipe } from "@vanilla-extract/recipes";
 
 export const container = style({
   display: "flex",
@@ -54,10 +52,6 @@ export const extraInfo = style({
   marginTop: "0.6rem",
 });
 
-export const extraInfoDetail = style({
-  display: "flex",
-});
-
 export const extraInfoItem = style({
   display: "flex",
   alignItems: "center",
@@ -77,40 +71,7 @@ export const extraInfoItem = style({
   },
 });
 
-export const align = style({
+export const flexRow = style({
   display: "flex",
   alignItems: "center",
-});
-
-export const text = recipe({
-  variants: {
-    type: {
-      heading: {
-        ...typographyVars.heading1,
-      },
-      subTitle: {
-        ...typographyVars.heading3,
-      },
-      body: {
-        ...typographyVars.body1,
-      },
-      caption: {
-        ...typographyVars.body4,
-      },
-    },
-    color: {
-      "black-100": {
-        color: color.black[100],
-      },
-      "black-200": {
-        color: color.black[200],
-      },
-      "gray-100": {
-        color: color.gray[100],
-      },
-      "gray-300": {
-        color: color.gray[300],
-      },
-    },
-  },
 });

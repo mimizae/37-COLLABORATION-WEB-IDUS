@@ -5,6 +5,7 @@ import { MEMBERSHIP_DATA, PAY_BENEFITS_DATA } from "@/shared/constants/benefit";
 import { PayBenefit } from "@/shared/components/benefit/pay-benefit";
 import { MoreBenefit } from "@/shared/components/benefit/more-benefit";
 import { ChevronRightRounded, Share, Star } from "@/assets/svg";
+import { Text } from "../text/text";
 interface ProductMainInfoProps {
   authorName: string;
   productName: string;
@@ -21,38 +22,39 @@ export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
     <div className={styles.container}>
       {/** 제품 메인 정보 */}
       <div className={styles.mainInfo}>
-        {/** 제품 타이틀 */}
-        <div className={styles.align}>
-          <span className={styles.text({ type: "caption", color: "gray-100" })}>
+        <div className={styles.flexRow}>
+          <Text type="caption" color="gray-100">
             {data.authorName}
-          </span>
+          </Text>
           <ChevronRightRounded />
         </div>
-        <div className={styles.text({ type: "subTitle", color: "black-100" })}>
+        <Text type="subTitle" color="black-100">
           {data.productName}
-        </div>
+        </Text>
       </div>
+
       {/** 제품 가격 정보 */}
       <div className={styles.priceInfo}>
-        {/** 원가 */}
-        <div
-          className={`${styles.originalPrice} ${styles.text({ type: "caption", color: "gray-100" })}`}>
+        <Text className={styles.originalPrice} type="caption" color="gray-100">
           {addComma(String(data.originalPrice))}원
-        </div>
-        {/** 할인가 적용 */}
-        <div className={styles.align}>
-          <span
-            className={`${styles.discountRate} ${styles.text({ type: "subTitle", color: "gray-300" })}`}>
+        </Text>
+        <div className={styles.flexRow}>
+          <Text
+            className={styles.discountRate}
+            type="subTitle"
+            color="gray-300">
             {data.discountRate}%
-          </span>
-          <div className={styles.align}>
-            <span
-              className={`${styles.discountedPrice} ${styles.text({ type: "heading", color: "black-100" })}`}>
+          </Text>
+          <div className={styles.flexRow}>
+            <Text
+              className={styles.discountedPrice}
+              type="heading"
+              color="black-100">
               {addComma(String(data.discountedPrice))}
-            </span>
-            <span className={styles.text({ type: "body", color: "black-100" })}>
+            </Text>
+            <Text type="body" color="black-100">
               원
-            </span>
+            </Text>
           </div>
         </div>
       </div>
@@ -77,30 +79,33 @@ export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
 
       {/** 제품 부가 정보 */}
       <div className={styles.extraInfo}>
-        <div className={styles.extraInfoDetail}>
+        <div className={styles.flexRow}>
           <div className={styles.extraInfoItem}>
             <Star />
-            <span
-              className={styles.text({ type: "caption", color: "black-200" })}>
+            <Text type="caption" color="black-200">
               {data.averageScore}
-            </span>
+            </Text>
           </div>
-          <div
-            className={`${styles.extraInfoItem} ${styles.text({ type: "caption" })}`}>
-            <span className={styles.text({ color: "gray-300" })}>후기</span>
-            <span className={styles.text({ color: "gray-100" })}>
+          <div className={styles.extraInfoItem}>
+            <Text type="caption" color="gray-300">
+              후기
+            </Text>
+            <Text type="caption" color="gray-100">
               {addComma(String(data.reviewCount))}
-            </span>
+            </Text>
           </div>
-          <div
-            className={`${styles.extraInfoItem} ${styles.text({ type: "caption" })}`}>
-            <span className={styles.text({ color: "gray-300" })}>구매</span>
-            <span className={styles.text({ color: "gray-100" })}>
+          <div className={styles.extraInfoItem}>
+            <Text type="caption" color="gray-300">
+              구매
+            </Text>
+            <Text type="caption" color="gray-100">
               {addComma(String(data.salesCount))}
-            </span>
+            </Text>
           </div>
         </div>
-        <Share />
+        <button type="button" aria-label="공유하기">
+          <Share />
+        </button>
       </div>
     </div>
   );
