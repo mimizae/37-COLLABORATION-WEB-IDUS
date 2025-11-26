@@ -4,8 +4,8 @@ import { useState } from "react";
 import SmallButton from "@/shared/components/button/small-button/small-button";
 import { SMALL_BUTTON_VARIANTS } from "@/shared/constants/button";
 import BottomSheet from "@/shared/components/bottom-sheet/bottom-sheet";
-import { color } from "@/shared/styles/tokens/color.css";
 import FooterDetail from "@/shared/components/footer-detail/footer-detail";
+import Purchase from "@/pages/purchase/purchase";
 
 const Footer = () => {
   const [isProductLiked, setIsProductLiked] = useState(false);
@@ -62,15 +62,8 @@ const Footer = () => {
       </div>
 
       <BottomSheet isOpen={isBottomSheetOpen} onClose={handleBottomSheetClose}>
-        <p>살수록할인</p>
-        <p>2개부터, 200원씩 추가 할인</p>
-
-        <div
-          style={{
-            backgroundColor: color.white[300],
-            height: "100vh",
-            marginTop: "20px",
-          }}></div>
+        <FooterDetail />
+        <Purchase />
       </BottomSheet>
     </footer>
   );
