@@ -34,6 +34,7 @@ export default defineConfig({
       "@svg": path.resolve(dirname, "./src/assets/svg"),
       "@img": path.resolve(dirname, "./src/assets/img"),
       "@styles": path.resolve(dirname, "./src/shared/styles"),
+      "@apis": path.resolve(dirname, "./src/apis"),
     },
   },
   test: {

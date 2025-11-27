@@ -10,14 +10,13 @@ export const apiClient = ky.create({
   },
   hooks: {
     beforeRequest: [
-      (request) => {
-        // TODO: 나중에 공통으로 넣을 헤더가 생기면 여기에서 처리
-        void request;
+      () => {
+        // TODO: 공통으로 넣을 헤더가 생기면 여기에서 처리
       },
     ],
     afterResponse: [
       async (_request, _options, response) => {
-        // TODO: 공통 에러 처리가 필요해지면 여기에서 처리
+        // 성공/실패 응답은 request 함수에서 처리
         return response;
       },
     ],
