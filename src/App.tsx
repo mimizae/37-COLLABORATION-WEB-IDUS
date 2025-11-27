@@ -1,12 +1,7 @@
-import { ProductInfo } from "./pages/product-info/product-info";
-import * as styles from "./test.css";
+﻿import RelatedProduct from "./pages/related-product/related-product";
 
 function App() {
-  return (
-    <div className={styles.test}>
-      <ProductInfo />
-    </div>
-  );
+  return <RelatedProduct />;
 }
 
 export default App;
