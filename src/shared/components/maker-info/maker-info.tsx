@@ -2,6 +2,7 @@ import * as styles from "./maker-info.css";
 import { ChevronRightSharp } from "@/assets/svg";
 import MakerProfileImage from "@/assets/img/maker-profile.png";
 import { LikeButton } from "../like-button/like-button";
+import { useAuthorLikeMutation } from "@/apis/mutations/use-author-like.mutation";
 
 interface MakerInfoProps {
   name: string;
@@ -18,7 +19,7 @@ export function MakerInfo({
   liked = false,
   likeCount = 0,
 }: MakerInfoProps) {
-  // TODO: api 연동해서 LikeButton에 전달 => 낙관적 업데이트
+  const { mutate: toggleLike } = useAuthorLikeMutation();
 
   return (
     <div className={styles.container}>
@@ -37,7 +38,13 @@ export function MakerInfo({
           <p className={styles.description}>{description}</p>
         </div>
       </div>
-      <LikeButton variant="maker" liked={liked} count={likeCount} />
+
+      <LikeButton
+        variant="maker"
+        liked={liked}
+        count={likeCount}
+        onClick={() => toggleLike({ authorId: 1, userId: 1 })}
+      />
     </div>
   );
 }
