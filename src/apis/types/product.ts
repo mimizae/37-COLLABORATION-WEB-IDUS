@@ -19,4 +19,13 @@ export interface ReviewResponse {
 // 리뷰 리스트 응답
 export interface ReviewListResponse {
   reviewResponses: ReviewResponse[];
+// 작품 좋아요 요청
+export interface ProductLikeRequest {
+  productId: number;
+  userId: number;
+}
+
+// 작품 좋아요 응답
+export interface ProductLikeResponse {
+  likeCount: number;
 }

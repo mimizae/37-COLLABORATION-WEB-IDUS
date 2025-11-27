@@ -1,7 +1,7 @@
-﻿import { ProductReview } from "./pages/product-review/product-review";
+﻿import Footer from "@/shared/components/footer/footer";
 
 function App() {
-  return <ProductReview />;
+  return <Footer />;
 }
 
 export default App;
