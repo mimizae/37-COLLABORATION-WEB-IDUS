@@ -11,6 +11,15 @@ import type { ProductInfoResponse } from "@/apis/types/product";
 
 export const ProductMainInfo = ({ data }: { data: ProductInfoResponse }) => {
   const statsList = getProductStatsList(data); // 제품 부가정보 데이터 포맷팅 함수
+
+  const handleCopyURL = async (url: string) => {
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <div className={styles.container}>
       {/** 제품 메인 정보 */}
@@ -88,7 +97,10 @@ export const ProductMainInfo = ({ data }: { data: ProductInfoResponse }) => {
             </div>
           ))}
         </div>
-        <button type="button" aria-label="공유하기">
+        <button
+          type="button"
+          aria-label="공유하기"
+          onClick={() => handleCopyURL(`${window.location.href}`)}>
           <Share />
         </button>
       </div>
