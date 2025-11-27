@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Star } from "@/assets/svg";
 import { addComma } from "@/shared/utils/add-comma";
-import type { ProductMainInfoProps as ProductData } from "../components/product-main-info/product-main-info";
+import type { ProductInfoResponse } from "@/apis/types/product";
 
 interface StatItem {
   label: string | ReactNode;
@@ -10,7 +10,7 @@ interface StatItem {
 }
 
 // 별점, 후기, 구매 수 동적 데이터 반환
-export const getProductStatsList = (data: ProductData): StatItem[] => {
+export const getProductStatsList = (data: ProductInfoResponse): StatItem[] => {
   return [
     {
       label: <Star />,
