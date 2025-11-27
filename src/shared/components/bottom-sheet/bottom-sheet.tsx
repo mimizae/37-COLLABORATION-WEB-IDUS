@@ -11,14 +11,8 @@ interface Props {
 }
 
 const BottomSheet = ({ isOpen, onClose, children }: Props) => {
-  const {
-    sheetRef,
-    contentRef,
-    handleTouchStart,
-    handleTouchMove,
-    handleTouchEnd,
-    handleDragHandlerMove,
-  } = useBottomSheetDrag({ onClose });
+  const { sheetRef, contentRef, contentDragHandlers, dragHandlerHandlers } =
+    useBottomSheetDrag({ onClose });
 
   // 바텀시트가 열렸을 때 뒷배경 스크롤 방지
   useEffect(() => {
@@ -36,21 +30,14 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
   if (!isOpen) return null;
 
   return createPortal(
-    // TODO: 접근성 고려
     <div className={styles.overlay}>
       <div className={styles.backdrop} onClick={onClose} />
       <div ref={sheetRef} className={styles.sheet}>
-        <DragHandler
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleDragHandlerMove}
-          onTouchEnd={handleTouchEnd}
-        />
+        <DragHandler {...dragHandlerHandlers} />
         <div
           ref={contentRef}
           className={styles.content}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}>
+          {...contentDragHandlers}>
           {children}
         </div>
       </div>
