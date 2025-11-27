@@ -25,7 +25,8 @@
       "@routes/*": ["./src/routes/*"],
       "@img/*": ["./src/assets/img/*"],
       "@svg/*": ["./src/assets/svg/*"],
-      "@styles/*": ["./src/shared/styles/*"]
+      "@styles/*": ["./src/shared/styles/*"],
+      "@apis/*": ["./src/apis/*"]
     },
 
     /* Linting */
