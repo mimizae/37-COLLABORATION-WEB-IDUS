@@ -10,8 +10,12 @@ import { ProductInfo } from "../product-info/product-info";
 const ProductDetail = lazy(
   () => import("@/pages/product-detail/product-detail")
 );
-const ProductReview = lazy(() => import("./components/product-review"));
-const RelatedProduct = lazy(() => import("./components/related-product"));
+const ProductReview = lazy(
+  () => import("@/pages/product-review/product-review")
+);
+const RelatedProduct = lazy(
+  () => import("@/pages/related-product/related-product")
+);
 
 const ProductPage = () => {
   const { productInfoRef, reviewRef, relatedRef, activeTab, handleTabClick } =
