@@ -1,4 +1,4 @@
-import { globalStyle } from "@vanilla-extract/css";
+﻿import { globalStyle } from "@vanilla-extract/css";
 import "./layer.css";
 import "./reset.css";
 import "../styles/typography.css";
@@ -21,4 +21,14 @@ globalStyle("html, body, #root", {
 // 모바일 웹앱용 추가 설정
 globalStyle("*", {
   WebkitTapHighlightColor: "transparent", // 탭 하이라이트 제거
+});
+
+// 전역 스크롤바 숨김
+globalStyle("html, body", {
+  scrollbarWidth: "none",
+  msOverflowStyle: "none",
+});
+
+globalStyle("html::-webkit-scrollbar, body::-webkit-scrollbar", {
+  display: "none",
 });
