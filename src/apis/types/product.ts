@@ -1,4 +1,23 @@
-// 요청, 응답 타입을 정의합니다
+// 작품 정보 조회 요청 
+export interface ProductInfoRequest {
+  productId: number;
+  userId: number;
+}
+
+// 작품 정보 조회 응답
+export interface ProductInfoResponse {
+  id: number;
+  name: string;
+  authorName: string;
+  price: number;
+  discountRate: number;
+  averageScore: number;
+  reviewCount: number;
+  salesCount: number;
+  imageUrls: string[];
+  likeCount: number;
+  isLiked: boolean;
+}
 
 // 리뷰어 정보
 export interface Reviewer {

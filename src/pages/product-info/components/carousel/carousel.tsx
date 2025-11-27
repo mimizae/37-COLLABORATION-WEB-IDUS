@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import { CAROUSEL_IMAGES } from "../../constants/carousel/carousel-images";
+import { useRef } from "react";
 import * as styles from "./carousel.css";
 import { addComma } from "@/shared/utils/add-comma";
 import { Banner, Logo } from "@/assets/svg";
@@ -7,20 +6,20 @@ import { useCarouselLayout } from "../../hooks/use-carousel-layout";
 import { useDragCarousel } from "../../hooks/use-drag-carousel";
 import { useAutoCarousel } from "../../hooks/use-auto-carousel";
 
-const EXTENDED_IMAGES = [
-  CAROUSEL_IMAGES[CAROUSEL_IMAGES.length - 1],
-  ...CAROUSEL_IMAGES,
-  CAROUSEL_IMAGES[0],
-]; // 무한 스크롤 이미지 배열
+interface CarouselProps {
+  images: string[];
+  price: number;
+  rate: number;
+}
 
-export const Carousel = () => {
-  const [discountedPrice] = useState(2205); // (임시) 할인가 가격
+export const Carousel = ({ images, price, rate }: CarouselProps) => {
+  const EXTENDED_IMAGES = [images[images.length - 1], ...images, images[0]]; // 무한 스크롤 이미지 배열
   const carouselRef = useRef<HTMLDivElement>(null); // 캐러셀 트랙
 
   // 1. 자동 재생 및 이미지 인덱스 상태 관리
   const autoPlay = useAutoCarousel({
     carouselRef,
-    totalImages: CAROUSEL_IMAGES.length,
+    totalImages: images.length,
   });
   // 2. 사용자 드래그 이벤트 핸들링
   const drag = useDragCarousel({
@@ -61,9 +60,9 @@ export const Carousel = () => {
             <img
               draggable={false}
               className={styles.image}
-              key={`${image.id}-${index}`}
-              src={image.image}
-              alt={image.alt}
+              key={`${image}-${index}`}
+              src={image}
+              alt={`상품이미지 ${index}`}
             />
           ))}
         </div>
@@ -73,11 +72,11 @@ export const Carousel = () => {
         <div className={styles.index}>
           <span>{autoPlay.displayIndex}</span>
           <span>/</span>
-          <span>{CAROUSEL_IMAGES.length}</span>
+          <span>{images.length}</span>
         </div>
         <div className={styles.badge}>
           <Logo />
-          <span>{addComma(String(discountedPrice))}원 할인 종료</span>
+          <span>{addComma(String((price * rate) / 100))}원 할인 종료</span>
           <span className={styles.period}>D-2</span>
         </div>
       </div>
