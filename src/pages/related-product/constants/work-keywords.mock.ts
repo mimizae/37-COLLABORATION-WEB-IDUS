@@ -1,4 +1,4 @@
-import { type WorkKeyword } from "../work-keywords/work-keywords";
+import { type WorkKeyword } from "../components/work-keywords/work-keywords";
 
 export const mockKeywords: WorkKeyword[] = [
   { id: "k1", label: "#카세트앨범" },
