@@ -1,7 +1,8 @@
-﻿import RelatedProduct from "./pages/related-product/related-product";
+﻿import { RouterProvider } from "react-router";
+import { router } from "./routes/router";
 
 function App() {
-  return <RelatedProduct />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

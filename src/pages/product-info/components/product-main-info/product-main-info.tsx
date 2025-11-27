@@ -7,20 +7,10 @@ import { MoreBenefit } from "@/shared/components/benefit/more-benefit";
 import { ChevronRightRounded, Share } from "@/assets/svg";
 import { Text } from "../text/text";
 import { getProductStatsList } from "../../utils/get-product-stats";
-export interface ProductMainInfoProps {
-  authorName: string;
-  productName: string;
-  originalPrice: number;
-  discountRate: number;
-  discountedPrice: number;
-  averageScore: number;
-  reviewCount: number;
-  salesCount: number;
-}
+import type { ProductInfoResponse } from "@/apis/types/product";
 
-export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
+export const ProductMainInfo = ({ data }: { data: ProductInfoResponse }) => {
   const statsList = getProductStatsList(data); // 제품 부가정보 데이터 포맷팅 함수
-
   return (
     <div className={styles.container}>
       {/** 제품 메인 정보 */}
@@ -32,14 +22,14 @@ export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
           <ChevronRightRounded />
         </div>
         <Text type="subTitle" color="black-100">
-          {data.productName}
+          {data.name}
         </Text>
       </div>
 
       {/** 제품 가격 정보 */}
       <div className={styles.priceInfo}>
         <Text className={styles.originalPrice} type="caption" color="gray-100">
-          {addComma(String(data.originalPrice))}원
+          {addComma(String(data.price))}원
         </Text>
         <div className={styles.flexRow}>
           <Text
@@ -53,7 +43,7 @@ export const ProductMainInfo = ({ data }: { data: ProductMainInfoProps }) => {
               className={styles.discountedPrice}
               type="heading"
               color="black-100">
-              {addComma(String(data.discountedPrice))}
+              {addComma(String((data.price * (100 - data.discountRate)) / 100))}
             </Text>
             <Text type="body" color="black-100">
               원

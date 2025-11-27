@@ -2,24 +2,20 @@ import { MakerInfo } from "@/shared/components/maker-info/maker-info";
 import { Carousel } from "./components/carousel/carousel";
 import { ProductMainInfo } from "./components/product-main-info/product-main-info";
 import { ProductSummary } from "./components/product-summary/product-summary";
+import { useProductInfo } from "@/apis/queries/use-product-info.query";
 
 export const ProductInfo = () => {
-  const data = {
-    authorName: "SPEDEAR",
-    productName: "[idus단독]음성을 전하는 카세트 앨범 음성 편지",
-    originalPrice: 15000,
-    discountRate: 26,
-    discountedPrice: 11665,
-    averageScore: 4.8,
-    reviewCount: 634,
-    salesCount: 4319,
-  };
+  const { data: productInfo } = useProductInfo({ userId: 0, productId: 1 });
   return (
     <>
       {/** 캐러셀 */}
-      <Carousel />
+      <Carousel
+        images={productInfo.imageUrls}
+        price={productInfo.price}
+        rate={productInfo.discountRate}
+      />
       {/** 작품 메인 정보 */}
-      <ProductMainInfo data={data} />
+      <ProductMainInfo data={productInfo} />
       {/** 작품 요약 정보 */}
       <ProductSummary />
       {/** 작가 정보 */}
