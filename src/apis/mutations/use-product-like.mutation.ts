@@ -6,7 +6,8 @@ import type {
   ProductLikeRequest,
   ProductLikeResponse,
 } from "@/apis/types/product";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { productQueryKeys } from "@/apis/constants/query-key";
 
 export const postProductLike = ({ productId, userId }: ProductLikeRequest) => {
   return request<ProductLikeResponse>({
@@ -19,7 +20,14 @@ export const postProductLike = ({ productId, userId }: ProductLikeRequest) => {
 };
 
 export const useProductLikeMutation = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: postProductLike,
+    onSuccess: (_, { productId }) => {
+      queryClient.invalidateQueries({
+        queryKey: productQueryKeys.detail(productId),
+      });
+    },
   });
 };
