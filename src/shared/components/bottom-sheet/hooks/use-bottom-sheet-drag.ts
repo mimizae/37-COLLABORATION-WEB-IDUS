@@ -44,7 +44,9 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
 
     const deltaY = currentY - startY;
 
+    // 드래그가 위에서 아래로 진행될 때 if문 진입(content를 위로 스크롤하거나, 바텀시트를 닫기 위한 드래그 액션)
     if (deltaY > 0) {
+      // content의 최상단에 도달했을때 if문 진입 및 sheet 드래그
       if (contentRef.current && contentRef.current.scrollTop === 0) {
         moveSheet(currentY);
       }
@@ -58,6 +60,7 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     const deltaY = currentY - startY;
 
     if (deltaY > 0) {
+      // drag handler 조작 시 scrollTop 체크 없이 바로 sheet 드래그
       moveSheet(currentY);
     }
   };
@@ -68,14 +71,18 @@ export const useBottomSheetDrag = ({ onClose }: UseBottomSheetDragProps) => {
     isDraggingRef.current = false;
 
     if (sheetRef.current) {
+      // CLOSE_THRESHOLD 이상 드래그하면 닫기
       if (dragDistanceRef.current > CLOSE_THRESHOLD) {
+        // 부드럽게 아래로 내려가며 닫기
         sheetRef.current.style.transition = `transform ${CLOSE_TRANSITION_DURATION}ms ease-in`;
         sheetRef.current.style.transform = "translateY(100%)";
 
+        // transition 완료 후 onClose 호출
         setTimeout(() => {
           onClose();
         }, CLOSE_TRANSITION_DURATION);
       } else {
+        // sheet 원위치로 복귀
         sheetRef.current.style.transition = `transform ${RETURN_TRANSITION_DURATION}ms ease-out`;
         sheetRef.current.style.transform = "translateY(0)";
       }

@@ -21,6 +21,7 @@ const BottomSheet = ({ isOpen, onClose, children }: Props) => {
       document.body.style.overflow = "hidden";
 
       return () => {
+        // isOpen이 변경되거나 컴포넌트가 언마운트될 때 실행, body의 overflow를 원래 값으로 복구
         document.body.style.overflow = originalOverflow;
       };
     }
