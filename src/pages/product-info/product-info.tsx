@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { MakerInfo } from "@/shared/components/maker-info/maker-info";
 import { Carousel } from "./components/carousel/carousel";
 import { ProductMainInfo } from "./components/product-main-info/product-main-info";
@@ -19,10 +20,16 @@ export const ProductInfo = () => {
       {/** 작품 요약 정보 */}
       <ProductSummary />
       {/** 작가 정보 */}
-      <MakerInfo
-        name="SPEDEAR"
-        description="소중한 시간을 담을 수 있는 아이템입니다."
-      />
+      <Suspense
+        fallback={
+          <MakerInfo
+            name={data.authorName}
+            description="작가 정보를 불러오는 중입니다."
+            profileImage={undefined}
+          />
+        }>
+        <AuthorInfoContent />
+      </Suspense>
     </>
   );
 };
