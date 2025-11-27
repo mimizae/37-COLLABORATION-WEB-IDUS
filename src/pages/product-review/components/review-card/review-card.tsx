@@ -6,6 +6,7 @@ export interface ReviewCardProps {
   score: number; // 별점
   createdAt: string; // 작성일
   content: string; // 후기 내용
+  profileImageUrl?: string; // 프로필 이미지 URL
 }
 
 export const ReviewCard = ({
@@ -13,13 +14,22 @@ export const ReviewCard = ({
   score,
   createdAt,
   content,
+  profileImageUrl,
 }: ReviewCardProps) => {
   return (
     // 후기 카드 전체
     <article className={styles.reviewCard}>
       <div className={styles.reviewHeader}>
         {/* 왼쪽 프로필 */}
-        <div className={styles.reviewProfile} />
+        {profileImageUrl ? (
+          <img
+            src={profileImageUrl}
+            alt={`${nickname} 프로필`}
+            className={styles.reviewProfile}
+          />
+        ) : (
+          <div className={styles.reviewProfile} />
+        )}
 
         {/* 오른쪽: 닉네임 + (작성일 / 별점) */}
         <div>

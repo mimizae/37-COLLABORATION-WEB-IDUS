@@ -25,6 +25,7 @@ export const ReviewList = () => {
         <ReviewCard
           key={review.reviewId}
           nickname={review.reviewer?.nickname ?? "익명"}
+          profileImageUrl={review.reviewer?.profileImageUrl}
           createdAt={review.createdAt}
           score={review.score}
           content={review.content}
