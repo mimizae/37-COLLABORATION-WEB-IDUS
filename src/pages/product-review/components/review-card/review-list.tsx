@@ -10,13 +10,13 @@ const PAGE_SIZE = 5;
 export const ReviewList = () => {
   const productId = 1;
   const { data } = useProductReviewQuery(productId);
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const reviews = data?.reviewResponses ?? [];
-  const visibleReviews = reviews.slice(0, visibleCount);
+  const visibleReviews = isExpanded ? reviews : reviews.slice(0, PAGE_SIZE);
 
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + PAGE_SIZE);
+  const handleToggle = () => {
+    setIsExpanded((prev) => !prev);
   };
 
   return (
@@ -31,16 +31,20 @@ export const ReviewList = () => {
         />
       ))}
 
-      <div className={styles.loadMoreWrapper}>
-        <LargeButton
-          type="button"
-          variant={LARGE_BUTTON_VARIANTS.DEFAULT}
-          hasArrow
-          onClick={handleLoadMore}
-          aria-label="작품 구매 후기 더보기">
-          작품 구매 후기 더보기
-        </LargeButton>
-      </div>
+      {reviews.length > PAGE_SIZE && (
+        <div className={styles.loadMoreWrapper}>
+          <LargeButton
+            type="button"
+            variant={LARGE_BUTTON_VARIANTS.DEFAULT}
+            hasArrow={false}
+            onClick={handleToggle}
+            aria-label={
+              isExpanded ? "작품 구매 후기 접기" : "작품 구매 후기 더보기"
+            }>
+            {isExpanded ? "작품 구매 후기 접기" : "작품 구매 후기 더보기"}
+          </LargeButton>
+        </div>
+      )}
     </section>
   );
 };
