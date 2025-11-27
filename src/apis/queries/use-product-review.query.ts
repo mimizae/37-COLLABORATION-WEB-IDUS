@@ -2,8 +2,8 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { HTTPMethod, request } from "@/apis/request";
 import { API_ENDPOINTS } from "@/apis/constants/api-endpoints";
-import { productQueryKeys } from "@/apis/constants/query-key";
 import type { ReviewListResponse } from "@/apis/types/product";
+import { productQueryKeys } from "../constants/query-key";
 
 const fetchProductReviews = (productId: number) =>
   request<ReviewListResponse>({

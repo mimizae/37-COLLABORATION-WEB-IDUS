@@ -2,8 +2,9 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { HTTPMethod, request } from "@/apis/request";
 import { API_ENDPOINTS } from "@/apis/constants/api-endpoints";
-import { authorQueryKeys } from "@/apis/constants/query-key";
+
 import type { AuthorInfoResponse } from "@/apis/types/author";
+import { authorQueryKeys } from "../constants/query-key";
 
 const fetchAuthorInfo = (authorId: number, userId: number) =>
   request<AuthorInfoResponse>({
