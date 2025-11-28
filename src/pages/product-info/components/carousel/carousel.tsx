@@ -63,6 +63,8 @@ export const Carousel = ({ images, price, rate }: CarouselProps) => {
               key={`${image}-${index}`}
               src={image}
               alt={`상품이미지 ${index}`}
+              // LCP 최적화: 첫 번째 이미지(index 1)는 우선 로드
+              fetchPriority={index === 1 ? "high" : "auto"}
             />
           ))}
         </div>
